@@ -1,0 +1,212 @@
+# vim: tabstop=2 shiftwidth=2 noexpandtab :
+
+menu "Fanboy Configuration"
+	config MAIN_LED_ENABLED
+		bool "Main LED for important notifications"
+		default y
+		help
+				LED for notifications has been contected to board.
+
+	config MAIN_LED_GPIO
+		int "Main LED GPIO number"
+		range 0 34
+		default 4
+		depends on MAIN_LED_ENABLED
+		help
+			GPIO number (IOxx) connected to LED
+			Some GPIOs are used for other purposes (flash connections, etc.) and cannot be used as LED output.
+			GPIOs 35-39 are input-only so cannot be used as outputs.
+
+		menuconfig FAN1_ENABLED
+			bool "Fan1 Configuration"
+			default y
+			help
+				Simulate FAN 1
+
+    if FAN1_ENABLED
+			config FAN1_MAX_ROTATION_SPEED
+				int "Fan max rotation speed [rpm]"
+				range 6 999999
+				default 7200
+				help
+					Rotation speed on max power
+
+			config FAN1_EN_ENABLED
+				bool "Fan has EN-input"
+				default n
+				help
+					Disable it for 'always on' fan
+
+	 		config FAN1_EN_GPIO
+			 	int "Fan enabled GPIO number"
+		 		depends on FAN1_EN_ENABLED
+	 			range 0 39
+		 		default 36
+		 		help
+			 		GPIO number (IOxx) connected to Fan's enable signal, -1 means always on.
+
+		 	config FAN1_EN_ACTIVE
+			 	bool "Fan enabled active level"
+	 			depends on FAN1_EN_ENABLED
+				default y
+		 		help
+			 		Active High or Low for fan
+
+			config FAN1_PWM_ENABLED
+				bool "Fan has Pwm-input"
+				default n
+				help
+					Possibility to control rotation power, default - always 100%.
+
+	 		config FAN1_PWM_GPIO
+			 	int "Fan PWM-in GPIO number"
+		 		depends on FAN1_PWM_ENABLED
+	 			range 0 39
+		 		default 36
+		 		help
+			 		GPIO number (IOxx) connected to Fan's pwm signal.
+
+			config FAN1_TACHO_PULSE_PER_ROUND
+				int "Pulses per Round"
+	 			range 0 65535
+				default 2
+				help
+					Quantity of pulses per round
+
+	 		config FAN1_TACHO_GPIO
+			 	int "Fan Tacho-out GPIO number"
+	 			range 0 34
+		 		default 34
+		 		help
+			 		GPIO number (IOxx) connected to Fan's tacho signal.
+		endif
+
+		menuconfig FAN2_ENABLED
+			bool "Fan2 Configuration"
+			default n
+			help
+				Simulate FAN 2
+
+    if FAN2_ENABLED
+			config FAN2_MAX_ROTATION_SPEED
+				int "Fan max rotation speed [rpm]"
+				range 6 999999
+				default 7200
+				help
+					Rotation speed on max power
+
+			config FAN2_EN_ENABLED
+				bool "Fan has EN-input"
+				default n
+				help
+					Disable it for 'always on' fan
+
+	 		config FAN2_EN_GPIO
+			 	int "Fan enabled GPIO number"
+		 		depends on FAN2_EN_ENABLED
+	 			range 0 39
+		 		default 36
+		 		help
+			 		GPIO number (IOxx) connected to Fan's enable signal, -1 means always on.
+
+		 	config FAN2_EN_ACTIVE
+			 	bool "Fan enabled active level"
+	 			depends on FAN2_EN_ENABLED
+				default y
+		 		help
+			 		Active High or Low for fan
+
+			config FAN2_PWM_ENABLED
+				bool "Fan has Pwm-input"
+				default n
+				help
+					Possibility to control rotation power, default - always 100%.
+
+	 		config FAN2_PWM_GPIO
+			 	int "Fan PWM-in GPIO number"
+		 		depends on FAN2_PWM_ENABLED
+	 			range 0 39
+		 		default 36
+		 		help
+			 		GPIO number (IOxx) connected to Fan's pwm signal.
+
+			config FAN2_TACHO_PULSE_PER_ROUND
+				int "Pulses per Round"
+	 			range 0 65535
+				default 2
+				help
+					Quantity of pulses per round
+
+	 		config FAN2_TACHO_GPIO
+			 	int "Fan Tacho-out GPIO number"
+	 			range 0 34
+		 		default 34
+		 		help
+			 		GPIO number (IOxx) connected to Fan's tacho signal.
+		endif
+
+		menuconfig FAN3_ENABLED
+			bool "Fan3 Configuration"
+			default n
+			help
+				Simulate FAN 3
+
+    if FAN3_ENABLED
+			config FAN3_MAX_ROTATION_SPEED
+				int "Fan max rotation speed [rpm]"
+				range 6 999999
+				default 7200
+				help
+					Rotation speed on max power
+
+			config FAN3_EN_ENABLED
+				bool "Fan has EN-input"
+				default n
+				help
+					Disable it for 'always on' fan
+
+	 		config FAN3_EN_GPIO
+			 	int "Fan enabled GPIO number"
+		 		depends on FAN3_EN_ENABLED
+	 			range 0 39
+		 		default 36
+		 		help
+			 		GPIO number (IOxx) connected to Fan's enable signal, -1 means always on.
+
+		 	config FAN3_EN_ACTIVE
+			 	bool "Fan enabled active level"
+	 			depends on FAN3_EN_ENABLED
+				default y
+		 		help
+			 		Active High or Low for fan
+
+			config FAN3_PWM_ENABLED
+				bool "Fan has Pwm-input"
+				default n
+				help
+					Possibility to control rotation power, default - always 100%.
+
+	 		config FAN3_PWM_GPIO
+			 	int "Fan PWM-in GPIO number"
+		 		depends on FAN3_PWM_ENABLED
+	 			range 0 39
+		 		default 36
+		 		help
+			 		GPIO number (IOxx) connected to Fan's pwm signal.
+
+			config FAN3_TACHO_PULSE_PER_ROUND
+				int "Pulses per Round"
+	 			range 0 65535
+				default 2
+				help
+					Quantity of pulses per round
+
+	 		config FAN3_TACHO_GPIO
+			 	int "Fan Tacho-out GPIO number"
+	 			range 0 34
+		 		default 34
+		 		help
+			 		GPIO number (IOxx) connected to Fan's tacho signal.
+		endif
+
+endmenu
