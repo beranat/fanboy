@@ -66,6 +66,25 @@ menu "Fanboy Configuration"
 		 		help
 			 		GPIO number (IOxx) connected to Fan's pwm signal.
 
+    choice FAN1_PWM_CURVE
+        prompt "Power from Pwm dependency"
+		 		depends on FAN1_PWM_ENABLED
+        default FAN1_PWM_CURVE_LINEAR
+        help
+            Select the curve FanPower = Curve(Pwm-Input).
+
+        config FAN1_PWM_CURVE_LINEAR
+            bool "FAN1_PWM_CURVE_LINEAR"
+            help
+							Ideal linear curve
+
+        config FAN1_PWM_CURVE_5
+            bool "FAN1_PWM_CURVE_5"
+            help
+							First 5% works like 100% and linear next
+    endchoice
+
+
 			config FAN1_TACHO_PULSE_PER_ROUND
 				int "Pulses per Round"
 	 			range 0 65535

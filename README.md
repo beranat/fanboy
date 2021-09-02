@@ -4,5 +4,5 @@ Fans emulator on ESP32
 
   Build project
 -----------------
-* cmake -B build .
+* cmake -DCMAKE_BUILD_TYPE=RELEASE -B build .
 * cmake --build build --parallel `nproc`
